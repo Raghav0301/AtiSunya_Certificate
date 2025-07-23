@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AtiSunya Certificate Generator</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Password Protection -->
+<script>
+  const password = prompt("Enter access password:");
+  if (password !== "AtiSunya@123web") {
+    alert("Unauthorized access!");
+    document.body.innerHTML = "<h2 style='text-align:center;'>Access Denied</h2>";
+    throw new Error("Unauthorized access");
+  }
+</script>
+
+<div class="form">
+  <h2>🎓 Generate Certificate</h2>
+  <input type="text" id="studentName" placeholder="Student Name" />
+  <input type="text" id="courseName" placeholder="Course Title" />
+  <input type="date" id="completionDate" />
+  <button onclick="generateCertificate()">Generate</button>
+  <button onclick="downloadCertificate()">Download as PDF</button>
+</div>
+
+<div id="certificate" class="certificate">
+  <img src="certificate_bg.png" class="bg-image" />
+  <img src="atisunya-logo.png" class="logo atisunya-logo" />
+  <img src="microsoft_logo.png" class="logo microsoft-logo" />
+
+  <div class="cert-title">CERTIFICATE OF COMPLETION</div>
+  <div class="cert-subtitle">This is to certify that</div>
+  <div class="cert-name" id="certName">[Student Name]</div>
+  <div class="cert-subtitle">has successfully completed the course</div>
+  <div class="cert-course" id="certCourse">[Course Title]</div>
+  <div class="cert-date" id="certDate">on [Completion Date]</div>
+
+  <div class="signatures">
+    <div class="sign-block"><p>Umesh Pandit</p><span>Instructor</span></div>
+    <div class="sign-block"><p>Atul Verma</p><span>Course Provider</span></div>
+    <div class="sign-block"><p>Saroj Pandit</p><span>Director</span></div>
+  </div>
+
+  <div class="cert-id" id="certId">Certificate ID: ASPL-XXXXXX</div>
+  <div class="cert-qr" id="qr-code"></div>
+</div>
+
+<!-- JS Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
