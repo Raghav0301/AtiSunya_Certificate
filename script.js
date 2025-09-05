@@ -17,13 +17,15 @@ function generateCertificate() {
   document.getElementById("certId").textContent = "Certificate ID: " + uniqueId;
 
   const qrCodeContainer = document.getElementById("qr-code");
-  const qrData = `https://atisunya.co/verify/${uniqueId}`;
-  qrCodeContainer.innerHTML = "";
-  new QRCode(qrCodeContainer, {
-    text: qrData,
-    width: 90,
-    height: 90,
-  });
+
+// LinkedIn ka permanent link
+const qrData = "https://www.linkedin.com/company/atisunyaprivatelimited/";
+
+// API se QR generate hoga
+const qrLink = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(qrData)}&size=150x150`;
+
+// Certificate pe QR show karna
+qrCodeContainer.innerHTML = `<img src="${qrLink}" alt="LinkedIn QR Code" width="90" height="90"/>`;
 }
 
 function downloadCertificate() {
